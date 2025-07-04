@@ -1,0 +1,6 @@
+# 백엔드 node_modules 제외
+/back/node_modules/
+/back/.env
+
+# 프론트엔드 node_modules 제외
+/front/node_modules/
