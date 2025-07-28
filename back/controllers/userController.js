@@ -8,19 +8,19 @@ const createUser = asyncHandler(async (req, res) => {
     res
       .status(400)
       .json({ success: false, message: "필요한 값이 입력되지 않았습니다." });
-  }
+  } else {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res
+        .status(400)
+        .json({ success: false, message: "이메일이 이미 존재합니다." });
+    }
 
-  const existingUser = await User.findOne({ email });
-  if (existingUser) {
-    return res
-      .status(400)
-      .json({ success: false, message: "이메일이 이미 존재합니다." });
+    const user = await User.create({ email, password, name });
+    res
+      .status(201)
+      .json({ success: true, data: user, message: "유저가 생성되었습니다." });
   }
-
-  const user = await User.create({ email, password, name });
-  res
-    .status(201)
-    .json({ success: true, data: user, message: "유저가 생성되었습니다." });
 });
 
 // 모든 유저 정보 가져오기 요청

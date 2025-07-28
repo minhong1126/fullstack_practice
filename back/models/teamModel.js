@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 
 const teamSchema = new Schema(
   {
@@ -9,6 +9,18 @@ const teamSchema = new Schema(
     },
     description: {
       type: String,
+    },
+    users: [
+      {
+        type: Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
+    ],
+    creator: {
+      type: Types.ObjectId,
+      ref: "User",
+      required: true,
     },
     createdAt: {
       type: Date,
@@ -21,4 +33,4 @@ const teamSchema = new Schema(
 );
 
 const Team = model("Team", teamSchema);
-module.exports(Team);
+module.exports = Team;

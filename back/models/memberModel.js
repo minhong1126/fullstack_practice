@@ -1,15 +1,10 @@
 const { Schema, model, Types } = require("mongoose");
 
-const teamMemberSchema = new Schema(
+const memberSchema = new Schema(
   {
     team: {
       type: Types.ObjectId,
       ref: "Team",
-      required: true,
-    },
-    user: {
-      type: Types.ObjectId,
-      ref: "User",
       required: true,
     },
     role: {
@@ -30,5 +25,5 @@ const teamMemberSchema = new Schema(
   { timestamps: true }
 );
 
-const TeamMember = model("TeamMember", teamMemberSchema);
-module.exports = TeamMember;
+const Member = model("Member", memberSchema);
+module.exports = Member;
