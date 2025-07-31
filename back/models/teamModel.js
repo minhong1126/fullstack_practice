@@ -17,7 +17,7 @@ const teamSchema = new Schema(
         required: true,
       },
     ],
-    creator: {
+    owner: {
       type: Types.ObjectId,
       ref: "User",
       required: true,
