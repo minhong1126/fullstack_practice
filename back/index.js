@@ -12,3 +12,5 @@ app.listen(PORT, () => {
 });
 
 app.use("/user", require("./routes/userRoute"));
+app.use("/team", require("./routes/teamRoute"));
+app.use("/member", require("./routes/memberRoute"));
