@@ -7,10 +7,10 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on PORT ${PORT}`);
-});
-
 app.use("/user", require("./routes/userRoute"));
 app.use("/team", require("./routes/teamRoute"));
 app.use("/member", require("./routes/memberRoute"));
+
+app.listen(PORT, () => {
+  console.log(`Example app listening on PORT ${PORT}`);
+});

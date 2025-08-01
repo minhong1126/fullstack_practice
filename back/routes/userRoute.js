@@ -1,17 +1,15 @@
 const express = require("express");
 const app = express();
 const router = express.Router();
-const {
-  createUser,
-  getAllUsers,
-  getUser,
-  patchUser,
-  deleteUser,
-} = require("../controllers/userController");
+const profileController = require("../controllers/user/profileController");
+const adminUserController = require("../controllers/user/adminUserController");
 
-router.route("/").post(createUser).get(getAllUsers);
+router.route("/").post(authController.createUser);
+router
+  .route("/:id")
+  .get(profileController.getUser)
+  .patch(profileController.patchUser)
+  .delete(authController.deleteUser);
+// router.route("/:id/team").get(getUserTeams);
 
-router.route("/:id").get(getUser).patch(patchUser).delete(deleteUser);
-
-router.route("/:id/team").get(getUserTeams);
 app.use(router);
