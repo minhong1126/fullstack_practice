@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
-const Team = require("../models/teamModel");
-const { errorResponse, successResponse } = require("../utils/response");
+const Team = require("../../models/teamModel");
+const { errorResponse, successResponse } = require("../../utils/response");
 
 // 팀 생성 요청
 exports.createTeam = asyncHandler(async (req, res) => {

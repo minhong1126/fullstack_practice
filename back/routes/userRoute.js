@@ -13,4 +13,5 @@ router.route("/").post(createUser).get(getAllUsers);
 
 router.route("/:id").get(getUser).patch(patchUser).delete(deleteUser);
 
+router.route("/:id/team").get(getUserTeams);
 app.use(router);

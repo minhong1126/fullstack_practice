@@ -10,21 +10,10 @@ const teamSchema = new Schema(
     description: {
       type: String,
     },
-    users: [
-      {
-        type: Types.ObjectId,
-        ref: "User",
-        required: true,
-      },
-    ],
     owner: {
       type: Types.ObjectId,
       ref: "User",
       required: true,
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now(),
     },
   },
   {

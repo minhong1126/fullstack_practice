@@ -7,6 +7,11 @@ const memberSchema = new Schema(
       ref: "Team",
       required: true,
     },
+    user: {
+      type: Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     role: {
       type: String,
       enum: ["OWNER", "ADMIN", "MEMBER"],

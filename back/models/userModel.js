@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 
 const userSchema = new Schema(
   {
@@ -16,10 +16,15 @@ const userSchema = new Schema(
       required: true,
       maxlength: 20,
     },
-    createdAt: {
-      type: Date,
-      default: Date.now(),
+    profileImg: {
+      type: String,
     },
+    teams: [
+      {
+        type: Types.ObjectId,
+        ref: "Team",
+      },
+    ],
   },
   {
     timestamps: true,
