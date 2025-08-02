@@ -19,19 +19,7 @@ exports.createTeam = asyncHandler(async (req, res) => {
   }
 });
 
-// 모든 팀 목록 가져오기 요청
-exports.getAllTeams = asyncHandler(async (req, res) => {
-  try {
-    const teams = await Team.find();
-    if (teams) {
-      successResponse(res, 200, "전체 팀을 조회했습니다.", teams);
-    }
-  } catch (err) {
-    errorResponse(res, 500, err.message);
-  }
-});
-
-// 팀 가져오기 요청
+// 팀 정보 가져오기 요청
 exports.getTeam = asyncHandler(async (req, res) => {
   const { id } = req.params;
   try {
@@ -49,7 +37,7 @@ exports.getTeam = asyncHandler(async (req, res) => {
 // 팀 수정 요청
 exports.patchTeam = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const { name, description, users } = req.body;
+  const { name, description } = req.body;
 
   try {
     if (!(await Team.findOne(id))) {
@@ -61,7 +49,6 @@ exports.patchTeam = asyncHandler(async (req, res) => {
           $set: {
             name: name,
             description: description,
-            users: users,
           },
         }
       );
